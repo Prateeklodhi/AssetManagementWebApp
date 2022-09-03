@@ -1,0 +1,8 @@
+{%extends 'html/base.html' %}
+{% load crispy_forms_tags %}
+{%block title%}
+  Employee
+{%endblock title%}
+{%block body%}
+
+{%endblock body%}

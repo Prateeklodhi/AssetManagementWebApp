@@ -1,0 +1,39 @@
+{% extends 'html\base.html'%}
+{% load crispy_forms_tags %}
+{% block title %}
+  Asset
+{% endblock title %}
+<!-- {% block nav%}
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'assets' %}">Assets</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'employees' %}">Employee</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'register' %}">Register</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+</li>
+{% endblock nav%} -->
+{% block body %}
+<div class="w-full max-w-7xl mx-auto px-4" style="display: flex; flex-direction: column">
+  <form method="post" style="
+      display: grid;
+      grid-template-columns: max-content;
+      justify-content: center;
+      align-items: baseline;
+    " class="mt-5" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form|crispy}}
+
+    <div style="display: flex; justify-content: center; align-items: center">
+      <button type="submit" class="btn btn-success" value="Submit" style="color: black; width: 40%">
+        Update
+      </button>
+      <a href="{%url 'delete' asset.asset_serial_number %}" class="btn btn-danger" style="width: 40%">Delete</a>
+    </div>
+  </form>
+</div>
+{% endblock body %}

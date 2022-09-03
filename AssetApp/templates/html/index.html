@@ -1,0 +1,67 @@
+{%extends 'html/base.html' %}
+{% load crispy_forms_tags %}
+{%block title%}
+  Assets
+{%endblock title%}
+<!-- {% block nav%}
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'assets' %}">Assets</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'employees' %}">Employee</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'register' %}">Register</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+</li>
+{% endblock nav%} -->
+{%block body%}
+<section class="main" >
+  <form method="post" style="width:100%;justify-content: center; " enctype="multipart/form-data" id="table-form">
+    {% csrf_token %}
+    <div class="form-contorl" style="display: flex;flex-wrap: wrap; ">
+      {{ form|crispy }}
+    </div>
+    <button type="submit" class="btn btn-success" value="Submit" style="color: black;">Submit</button>
+  </form>
+  <br>
+  <div >
+    <div>
+      <form class="form-inline my-2 my-lg-0" id="searching-input">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name = "query">
+        <input class="btn btn-outline-success my-2 my-sm-0"  type="submit" value ="Search"/>
+      </form>
+      <div>
+        <button class="btn btn-outline-primary" id="print-btn" onclick="window.print()">Print</button>
+      </div>
+    </div>
+    
+    <table class="table mt-5" id="asset-table">
+      <thead>
+        <tr>
+          <th scope="col">Asset Serial Number</th>
+          <th scope="col">Asset Name</th>
+          <th scope="col">Status</th>
+          <th scope="col">Asset Host Id</th>
+          <th scope="col">Issued To</th>
+          <th scope="col" id ="show-button">Show</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for asset in assets %}
+        <tr>
+          <td>{{asset.asset_serial_number}}</td>
+          <td>{{asset.asset_name}}</td>
+          <td>{{asset.asset_status}}</td>
+          <td>{{asset.asset_host_id}}</td>
+          <td>{{asset.issued_to}}</td>
+          <td><a href="{%url 'assetshow' asset.asset_serial_number %}" class="btn btn-success" id ="show-button"style="color:black;">&#128269;</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+{%endblock body%}

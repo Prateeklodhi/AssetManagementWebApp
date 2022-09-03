@@ -1,0 +1,73 @@
+{% extends 'html\base.html'%}
+{% load crispy_forms_tags %}
+{% block title %}
+    Asset
+{% endblock title %}
+<!-- {%block nav%}
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'login' %}">Login</a>
+  </li>
+{%endblock nav%} -->
+{% block links %}
+    <style>
+        .new-row{
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            background: whitesmoke;
+            margin-bottom: 100px;
+            padding: 30px;
+        }
+        .card{
+            padding: 1rem;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            width: 250px!important; 
+            margin-right: 20px;
+        }
+        h2,h6{
+            text-align: center;
+            margin: 10px 0;
+        }
+   
+    </style>
+{% endblock links %}
+{% block body %}
+<div class="w-full max-w-7xl mx-auto px-4">
+    <div class="container">
+        <div class="new-row">
+            <div class="card" style="background: rgba(255, 238, 0, 0.589);">
+                <h6>Asset Count</h6> 
+                <h2>{{assetcount}}</h2>
+            </div>    
+            <div class="card" style="background: rgba(21, 255, 0, 0.301);">
+                <h6>Asset Alloted</h6>
+                <h2>{{alloted}}</h2>
+            </div>    
+            <div class="card" style="background: rgba(0, 0, 255, 0.226);">
+                <h6>Asset Unalloted</h6>
+                <h2>{{unalloted}}</h2>
+            </div>    
+        </div>
+        <div class="new-row">
+            <div class="card" style="background: rgba(0, 26, 255, 0.384);">
+                <h6>Doctor's Count</h6> 
+                <h2>{{doctors}}</h2>
+            </div>    
+            <div class="card" style="background: rgba(9, 96, 209, 0.795);">
+                <h6>Helpdesk Count</h6>
+                <h2>{{helpdesk}}</h2>
+                 
+            </div>    
+            <div class="card" style="background: rgba(183, 202, 5, 0.445);">
+                <h6>Technical Helpdesk</h6>
+                <h2>{{technical}}</h2>
+            </div>  
+            <div title="Management Information System"class="card" style="background: rgba(159, 221, 15, 0.507);">
+                <h6 >MIS Count</h6>
+                <h2>{{mis}}</h2>
+            </div>      
+        </div>
+    </div>
+</div>
+{% endblock body %}

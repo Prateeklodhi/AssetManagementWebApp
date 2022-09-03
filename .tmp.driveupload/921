@@ -1,0 +1,55 @@
+{%extends 'html/base.html' %}
+{% load crispy_forms_tags %}
+{%block title%}
+  Employee
+{%endblock title%}
+<!-- {% block nav%}
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'assets' %}">Assets</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'employees' %}">Employee</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'register' %}">Register</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+</li>
+{% endblock nav%} -->
+{%block body%}
+<section class="main" >
+  <form method="post" style="width:100%;justify-content: center; " enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-contorl" style="display: flex;flex-wrap: wrap; ">
+      {{ forms|crispy }}
+    </div>
+    <button type="submit" class="btn btn-success" value="Submit" style="color: black;">Submit</button>
+  </form>
+  <div >
+    <table class="table mt-5" >
+      <thead>
+        <tr>
+          <th scope="col">Employee ID</th>
+          <th scope="col">Employee Name</th>
+          <th scope="col">Employee Type</th>
+          <th scope="col">Show</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for employee in employees %}
+        <tr>
+          <th>{{employee.employee_id}}</th>
+          <td>{{employee.name}}</td>
+          <td>{{employee.employee_type}}</td>
+  
+          <td><a href="" class="btn btn-success" style="color:black;">&#128269;</a></td>
+          <td><a href="{% url 'employeedelete' employee.employee_id %}" class="btn btn-danger">&#128465;</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+{%endblock body%}

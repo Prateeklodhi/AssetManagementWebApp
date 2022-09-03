@@ -1,0 +1,29 @@
+{% extends 'html/base.html' %}
+{% load static %}
+<!-- {% block nav%}
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'assets' %}">Assets</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'employees' %}">Employee</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+</li>
+{% endblock nav%} -->
+{% block body %}
+<form action="" method="post">
+    {% csrf_token %}
+    {{form.username.label}}
+    {{form.username}}<br>
+    {{form.password1.label}}
+    {{form.password1}}<br>
+    {{form.password2.label}}
+    {{form.password2}}<br>
+    <input type="submit" name="submit" id="" value="Submit">
+    <br>
+    {%for message in messages %}
+    {{message}}
+    {%endfor%}
+</form>
+{% endblock body %}

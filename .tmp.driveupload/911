@@ -1,0 +1,22 @@
+{% extends 'html\base.html'%}
+{% load crispy_forms_tags %}
+{% block title %}
+    Asset
+{% endblock title %}
+<!-- {% block nav%}
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'assets' %}">Assets</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'employees' %}">Employee</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'register' %}">Register</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+</li>
+{% endblock nav%} -->
+{% block body %}
+    {{issueform|crispy}}
+{% endblock body%}
